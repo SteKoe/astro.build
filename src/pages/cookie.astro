@@ -1,0 +1,24 @@
+---
+import LayoutWithNav from "../layouts/LayoutWithNav.astro";
+
+let counter = 0
+
+if(Astro.cookies.has("counter")){
+  let cookie = Astro.cookies.get("counter")
+  counter = cookie.number() + 1
+}
+
+Astro.cookies.set("counter", counter)
+
+---
+<LayoutWithNav>
+    <div class="container">
+        <p>Counter From Cookie: {counter}</p>
+    </div>
+</LayoutWithNav>
+
+<style>
+.container {
+    margin: 1rem 2rem;
+}
+</style>

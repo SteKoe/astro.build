@@ -1,0 +1,10 @@
+---
+import { marked } from 'marked';
+import LayoutWithNav from '../layouts/LayoutWithNav.astro';
+const response = await fetch('https://raw.githubusercontent.com/wiki/adam-p/markdown-here/Markdown-Cheatsheet.md');
+const markdown = await response.text();
+const content = marked.parse(markdown);
+---
+<LayoutWithNav title="Remote markdown">
+    <article set:html={content} style="margin: 1rem" class="prose" />
+</LayoutWithNav>

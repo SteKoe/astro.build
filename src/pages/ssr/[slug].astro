@@ -1,0 +1,50 @@
+---
+import { gql } from "graphql-request";
+import { throttledFetch } from "../../helper/hygraphClient";
+import LayoutWithNav from "../../layouts/LayoutWithNav.astro";
+import Card from "../../components/Card.tsx";
+
+const params = await Astro.params;
+const { slug } = params;
+
+async function getStaticPaths(slug) {
+    const queryOne = gql`
+        {
+            city(where: {slug: "${slug}"}) {
+                id
+                name
+                slug
+                type
+                images {
+                    url
+                }
+                region {
+                    name
+                    type
+                }
+                description {
+                    html
+                    json
+                    references {
+                        ... on Asset {
+                            id
+                            url
+                            mimeType
+                        }
+                    }
+                }
+            }
+        }
+    `;
+
+    const { city } = await throttledFetch(queryOne);
+    return city;
+}
+
+const city = await getStaticPaths(slug);
+---
+<LayoutWithNav title={city.name}>
+    <div class="m-4">
+        <Card title={city.name} image={city.images[0].url} set:html={city.description?.html} />
+    </div>
+</LayoutWithNav>

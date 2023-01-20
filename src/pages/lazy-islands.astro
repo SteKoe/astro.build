@@ -1,0 +1,21 @@
+---
+// Component Imports
+import CounterVue from '../components/CounterVue.vue';
+import Card from '../components/Card.tsx';
+import LayoutWithNav from '../layouts/LayoutWithNav.astro';
+---
+<LayoutWithNav title="Astro | Dynamic Islands">
+    <div class="m-4 mt-96 grid gap-4">
+        <div class="text-center">
+            Scroll down to reveal!
+        </div>
+        <div class="mt-96" client:only="vue">
+            <Card>
+                <CounterVue client:visible>
+                    <h1>Hello from Vue! I am lazy loaded!</h1>
+                </CounterVue>
+            </Card>
+        </div>
+    </div>
+</Layout>
+

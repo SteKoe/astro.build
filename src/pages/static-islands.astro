@@ -1,0 +1,54 @@
+---
+// Component Imports
+import AstroComponent from '../components/AstroComponent.astro';
+import AstroHeart from '../components/AstroHeart.astro';
+import Counter from '../components/Counter.jsx';
+import CounterVue from '../components/CounterVue.vue';
+import Card from '../components/Card.tsx';
+import Layout from '../layouts/Layout.astro';
+import LayoutWithNav from '../layouts/LayoutWithNav.astro';
+---
+<LayoutWithNav title="Astro | Static Islands">
+    <div class="m-4 grid gap-4">
+        <div class="client-only">
+            <Card>
+                <Counter count={0}>
+                    <h1>Hello from React! I am static!</h1>
+                </Counter>
+            </Card>
+        </div>
+        <div class="client-static">
+            <Card>
+                <Counter count={1337}>
+                    <h1>Hello from React! I am static, too!</h1>
+                </Counter>
+            </Card>
+        </div>
+        <div class="client-static-2">
+            <Card>
+                <AstroComponent />
+            </Card>
+        </div>
+        <div class="client-static" >
+            <Card>
+                <CounterVue>
+                    <h1>Hello from Vue! I am static!</h1>
+                </CounterVue>
+            </Card>
+        </div>
+        <div class="client-static-2">
+            <Card>
+                <CounterVue>
+                    <h1>Hello from Vue! I am static, too!</h1>
+                </CounterVue>
+            </Card>
+        </div>
+        <div class="client-static text-center">
+            <Card>
+                <h1>Webcomponents :)</h1>
+                <AstroHeart></AstroHeart>
+            </Card>
+        </div>
+    </div>
+</Layout>
+

@@ -1,0 +1,65 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body class="flex">
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 124, 58, 237;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			#da62c4 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background-color: #f6f6f6;
+	}
+	html,
+	body {
+		margin: 0;
+		min-height: 100vh;
+		position: relative;
+	}
+	code {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+	.text-xs {
+		font-size: 1.2rem;
+	}
+	.italic {
+		font-style: italic;
+	}
+	.card {
+		border: 1px solid #ccc;
+		margin: 20px;
+		border-radius: 7px;
+		padding: 0 1.25rem;
+		box-shadow: 4px 4px 10px #00000011;
+	}
+	.text-center {
+		text-align: center;
+	}
+	.flex {
+		display: flex;
+		width: 100%;
+	}
+</style>
