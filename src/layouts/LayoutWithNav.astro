@@ -1,0 +1,56 @@
+---
+import Layout from "./Layout.astro";
+
+export interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+    <aside>
+        <h2>Navigation</h2>
+        <ul class="nav">
+            <li><a href="/">Index</a></li>
+            <li><a href="/layout">Layouted</a></li>
+
+            <li><h4 class="header">Static Markdown</h4></li>
+            <li><a href="/posts/post-1">Blogpost</a></li>
+
+            <li><h4 class="header">Generated pages (SSG)</h4></li>
+            <li><a href="/wiki/kupfertino">Kupfertino</a></li>
+            <li><a href="/wiki/heiwa">Heiwa</a></li>
+            <li><h4 class="header">Remote content</h4></li>
+            <li><a href="/remote-markdown">Remote Markdown</a></li>
+        </ul>
+    </aside>
+    <main>
+        <slot />
+    </main>
+</Layout>
+<style>
+    aside {
+        box-sizing: border-box;
+        min-width: 250px;
+        padding: 0 20px;
+        background-color: #ff000022;
+    }
+    main {
+        flex: 1 0 0;
+
+        display: flex;
+        align-items: stretch;
+        align-content: stretch;
+        flex-direction: column;
+        background-color: #22222211;
+    }
+    .nav {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .nav .header {
+        margin: 15px 0 5px 0;
+    }
+</style>

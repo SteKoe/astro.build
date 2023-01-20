@@ -1,0 +1,58 @@
+---
+import { gql } from "graphql-request";
+import { throttledFetch } from "../../helper/hygraphClient";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const queryOne = gql`
+        {
+            cities(first: 2) {
+                id
+                name
+                slug
+                type
+                image {
+                    url
+                }
+                region {
+                    name
+                    type
+                }
+                description {
+                    html
+                    json
+                    references {
+                        ... on Asset {
+                            id
+                            url
+                            mimeType
+                        }
+                    }
+                }
+            }
+        }
+    `;
+
+    const { cities } = await throttledFetch(queryOne);
+    const params = cities.map((city) => ({
+        params: { slug: city.slug },
+        props: city,
+    }));
+    return params;
+}
+
+const { slug } = await Astro.params;
+const city = await Astro.props;
+---
+<Layout>
+    <article class="card">
+        <h1>
+            {city.name}<br />
+            <small class="text-xs italic">
+                {city.type === "Capital" && "Hauptstadt"}
+                {city.region.name}
+            </small>
+        </h1>
+        <div set:html={city.description?.html} />
+    </article>
+</Layout>
