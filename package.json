@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "@astrojs/react": "^1.2.2",
+    "@astrojs/vercel": "^3.0.0",
     "@astrojs/vue": "^1.2.2",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "astro": "^1.9.0",
+    "astro": "^2.0.1",
+    "htmx.org": "^1.8.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "vue": "^3.2.45"
@@ -23,6 +25,10 @@
   "devDependencies": {
     "graphql-request": "^5.1.0",
     "marked": "^4.2.12",
+    "msw": "^1.0.0",
     "p-throttle": "^5.0.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
