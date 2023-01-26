@@ -1,0 +1,1 @@
+.counter{display:grid;font-size:2em;grid-template-columns:repeat(3,minmax(0,1fr));place-items:center}.counter-message{text-align:center}button[data-v-8ce7846c]{font-weight:700}.counter[data-v-8ce7846c]{display:grid;font-size:2em;grid-template-columns:repeat(3,minmax(0,1fr));place-items:center}.counter-message[data-v-8ce7846c]{text-align:center}
