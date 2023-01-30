@@ -1,10 +1,10 @@
 ---
 import LayoutWithNav from "../layouts/LayoutWithNav.astro";
 
-const counter = 0
+let counter = 0
 
 if(Astro.cookies.has("counter")){
-  const cookie = Astro.cookies.get("counter")
+  let cookie = Astro.cookies.get("counter")
   counter = cookie.number() + 1
 }
 
