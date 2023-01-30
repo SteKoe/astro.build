@@ -5,7 +5,7 @@ export const post: APIRoute = async ({ request }) => {
         const body = await request.json();
         console.log(body);
         const name = body.name;
-        return new Response(`User entered <i>${name}</i>`), {
+        return new Response(`User entered <i>${name}</i>`, {
             status: 200
         })
     }
