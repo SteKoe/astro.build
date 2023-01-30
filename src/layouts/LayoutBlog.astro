@@ -4,13 +4,13 @@ const {content}  = Astro.props;
 ---
 
 <LayoutWithNav>
-    <dl class="row">
-        <dt>Author</dt>
-        <dd>{content.author}</dd>
-        <dt>Tags</dt>
-        <dd>{content.tags.map(tag => (<span class="tag">{tag}</span>))}</dd>
-    </dl>
-    <div>
+    <div class="container">
+        <dl class="row">
+            <dt>Author</dt>
+            <dd>{content.author}</dd>
+            <dt>Tags</dt>
+            <dd>{content.tags.map(tag => (<span class="tag">{tag}</span>))}</dd>
+        </dl>
         <img src={content.image.url} alt={content.image.alt} width="250" />
         <slot />
     </div>
@@ -47,5 +47,8 @@ const {content}  = Astro.props;
     .tag::before {
         content: '#';
         display: inline-flex;
+    }
+    .container {
+        margin: 1rem 2rem;
     }
 </style>

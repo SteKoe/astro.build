@@ -4,12 +4,22 @@ import LayoutWithNav from '../layouts/LayoutWithNav.astro';
 <script src="https://unpkg.com/htmx.org@1.8.5"></script>
 
 <LayoutWithNav title="HTMX Demo">
-  <button class="btn"
-          hx-post="/htmx.json"
-          hx-prompt="Enter a string"
-          hx-confirm="Are you sure?"
-          hx-target="#response">
-    Prompt Submission
-  </button>
-  <div id="response"></div>
+<div class="container">
+      <button class="btn"
+              hx-post="/htmx.json"
+              hx-prompt="Enter a string"
+              hx-confirm="Are you sure?"
+              hx-target="#response">
+        Prompt Submission
+      </button>
+      <p id="response">
+        I will be replaced by the response from the server.
+      </p>
+</div>
 </LayoutWithNav>
+
+<style>
+.container {
+margin: 2rem;
+}
+</style>

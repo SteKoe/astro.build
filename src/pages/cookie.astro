@@ -12,5 +12,13 @@ Astro.cookies.set("counter", counter)
 
 ---
 <LayoutWithNav>
-  <h1>Counter From Cookie: {counter}</h1>
+    <div class="container">
+        <p>Counter From Cookie: {counter}</p>
+    </div>
 </LayoutWithNav>
+
+<style>
+.container {
+    margin: 1rem 2rem;
+}
+</style>
