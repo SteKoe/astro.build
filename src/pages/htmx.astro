@@ -1,0 +1,16 @@
+---
+import LayoutWithNav from '../layouts/LayoutWithNav.astro';
+---
+
+<script src="https://unpkg.com/htmx.org@1.8.5"></script>
+
+<LayoutWithNav title="HTMX Demo">
+  <button class="btn"
+          hx-post="/htmx"
+          hx-prompt="Enter a string"
+          hx-confirm="Are you sure?"
+          hx-target="#response">
+    Prompt Submission
+  </button>
+  <div id="response"></div>
+</LayoutWithNav>
