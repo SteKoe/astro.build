@@ -23,6 +23,8 @@
     "vue": "^3.2.45"
   },
   "devDependencies": {
-    "marked": "^4.2.12"
+    "graphql-request": "^5.1.0",
+    "marked": "^4.2.12",
+    "p-throttle": "^5.0.0"
   }
 }
