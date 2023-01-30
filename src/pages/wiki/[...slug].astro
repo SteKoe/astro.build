@@ -8,7 +8,7 @@ const { slug } = await Astro.params;
 async function getStaticPaths(slug) {
     const queryOne = gql`
         {
-            cities(first: 2) {
+            city(where: {slug: "${slug}"}) {
                 id
                 name
                 slug
@@ -35,12 +35,8 @@ async function getStaticPaths(slug) {
         }
     `;
 
-    const { cities } = await throttledFetch(queryOne);
-    const params = cities.map((city) => ({
-        params: { slug: slug },
-        props: city,
-    }));
-    return params;
+    const { city } = await throttledFetch(queryOne);
+    return city;
 }
 
 const city = await getStaticPaths(slug);
