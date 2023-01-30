@@ -1,11 +1,10 @@
 import type {APIRoute} from "astro";
+import {req} from "astro/dist/core/messages";
 
 export const post: APIRoute = async ({ request }) => {
-    const body = await request.formData();
-    console.log(body);
-    const name = "body.name";
+    const formData = await request.formData();
 
     return {
-        body: `User entered <i>${name}</i>`
+        body: `User entered <i>${formData.get("response")}</i>`
     }
 }
