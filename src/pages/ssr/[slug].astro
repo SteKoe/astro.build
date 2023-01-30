@@ -1,9 +1,12 @@
 ---
 import { gql } from "graphql-request";
 import { throttledFetch } from "../../helper/hygraphClient";
-import Layout from "../../layouts/Layout.astro";
+import LayoutWithNav from "../../layouts/LayoutWithNav.astro";
 
-const { slug } = await Astro.params;
+const params = await Astro.params;
+const { slug } = params;
+
+console.log(params);
 
 async function getStaticPaths(slug) {
     const queryOne = gql`
@@ -40,8 +43,9 @@ async function getStaticPaths(slug) {
 }
 
 const city = await getStaticPaths(slug);
+console.log(city);
 ---
-<Layout>
+<LayoutWithNav title={city.name}>
     <article class="card">
         <h1>
             {city.name}<br />
@@ -52,4 +56,4 @@ const city = await getStaticPaths(slug);
         </h1>
         <div set:html={city.description?.html} />
     </article>
-</Layout>
+</LayoutWithNav>

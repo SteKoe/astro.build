@@ -18,10 +18,14 @@ const { title } = Astro.props;
             <li><h4 class="header">Static Markdown</h4></li>
             <li><a href="/posts/post-1">Blogpost</a></li>
 
+            <li><h4 class="header">SSG</h4></li>
+            <li><a href="/ssg/kupfertino">Kupfertino</a></li>
+            <li><a href="/ssg/heiwa">Heiwa</a></li>
+            <li><a href="/ssg/colgata">Colgata ⛈️</a></li>
+
             <li><h4 class="header">SSR</h4></li>
             <li><h3 class="header">Remote content</h3></li>
-            <li><a href="/wiki/kupfertino">Kupfertino</a></li>
-            <li><a href="/wiki/heiwa">Heiwa</a></li>
+            <li><a href="/ssr/colgata">Colgata</a></li>
             <li><a href="/remote-markdown">Remote Markdown</a></li>
             <li><a href="/cookie">🍪 KESKE!</a></li>
         </ul>
@@ -53,5 +57,9 @@ const { title } = Astro.props;
     }
     .nav .header {
         margin: 15px 0 5px 0;
+    }
+    .nav a {
+        text-decoration: none;
+        color: #000;
     }
 </style>
