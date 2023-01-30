@@ -6,8 +6,6 @@ import LayoutWithNav from "../../layouts/LayoutWithNav.astro";
 const params = await Astro.params;
 const { slug } = params;
 
-console.log(params);
-
 async function getStaticPaths(slug) {
     const queryOne = gql`
         {
@@ -43,7 +41,6 @@ async function getStaticPaths(slug) {
 }
 
 const city = await getStaticPaths(slug);
-console.log(city);
 ---
 <LayoutWithNav title={city.name}>
     <article class="card">
