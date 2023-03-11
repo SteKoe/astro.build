@@ -6,5 +6,5 @@ const markdown = await response.text();
 const content = marked.parse(markdown);
 ---
 <LayoutWithNav title="Remote markdown">
-    <article set:html={content} style="margin: 1rem" />
+    <article set:html={content} style="margin: 1rem" class="prose" />
 </LayoutWithNav>

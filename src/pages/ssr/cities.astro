@@ -1,0 +1,46 @@
+---
+import { gql } from "graphql-request";
+import { throttledFetch } from "../../helper/hygraphClient";
+import LayoutWithNav from "../../layouts/LayoutWithNav.astro";
+import Card from "../../components/Card.tsx";
+const querySome = gql`
+    {
+        cities(where: {OR: [{slug:"moorast"}, {slug: "stromelsmoor"}, {slug: "gukken"}, {slug: "klint"}]}) {
+            id
+            name
+            slug
+            type
+            images {
+                url
+            }
+            region {
+                name
+                type
+            }
+            description {
+                html
+                json
+                references {
+                    ... on Asset {
+                        id
+                        url
+                        mimeType
+                    }
+                }
+            }
+        }
+    }
+`;
+
+const response = (await throttledFetch(querySome));
+const cities = response.cities.filter(city => city.description !== null);
+---
+<LayoutWithNav>
+    <div class="m-4">
+        {cities.map(city => (
+            <div class="mb-4">
+                <Card title={city.name} image={city.images[0]?.url} set:html={city.description?.html} />
+            </div>
+        ))}
+    </div>
+</LayoutWithNav>

@@ -4,16 +4,17 @@ export const prerender = true;
 import { gql } from "graphql-request";
 import { throttledFetch } from "../../helper/hygraphClient";
 import LayoutWithNav from "../../layouts/LayoutWithNav.astro";
+import Card from "../../components/Card.tsx";
 
 export async function getStaticPaths() {
     const queryOne = gql`
         {
-            cities(first: 2) {
+            cities(where: {OR: [{slug:"moorast"}, {slug: "stromelsmoor"}]}) {
                 id
                 name
                 slug
                 type
-                image {
+                images {
                     url
                 }
                 region {
@@ -47,14 +48,7 @@ const { slug } = await Astro.params;
 const city = await Astro.props;
 ---
 <LayoutWithNav title={city.name}>
-    <article class="card">
-        <h1>
-            {city.name}<br />
-            <small class="text-xs italic">
-                {city.type === "Capital" && "Hauptstadt"}
-                {city.region.name}
-            </small>
-        </h1>
-        <div set:html={city.description?.html} />
-    </article>
+    <div class="m-4">
+        <Card title={city.name} image={city.images[0].url} set:html={city.description?.html} />
+    </div>
 </LayoutWithNav>

@@ -11,21 +11,29 @@ const { title } = Astro.props;
 <Layout title={title}>
     <aside>
         <div class="sticky">
-            <h2>Navigation</h2>
+            <h2 class="font-bold">Navigation</h2>
             <ul class="nav">
                 <li><a href="/">Index</a></li>
+            </ul>
 
-                <li><h4 class="header">SSG</h4></li>
-                <li><a href="/ssg/kupfertino">Kupfertino</a></li>
-                <li><a href="/ssg/heiwa">Heiwa</a></li>
-                <li><a href="/ssg/colgata">Colgata (404)</a></li>
+            <h4 class="font-bold mt-4">SSG</h4>
+            <ul>
+                <li><a href="/ssg/cities">Cities</a></li>
+                <li><a href="/ssg/moorast">Moorast</a></li>
+                <li><a href="/ssg/stromelsmoor">Stromelsmoor</a></li>
+            </ul>
 
-                <li><h4 class="header">SSR</h4></li>
-                <li><a href="/posts/post-1">Markdown</a></li>
-                <li><a href="/ssr/colgata">Colgata</a></li>
-                <li><a href="/remote-markdown">Remote Markdown</a></li>
-                <li><a href="/cookie">🍪 KESKE!</a></li>
+            <h4 class="font-bold mt-4">SSR</h4>
+            <ul>
+                <li><a href="/ssr/cities">Cities</a></li>
+                <li><a href="/ssr/moorast">Moorast</a></li>
+                <li><a href="/ssr/stromelsmoor">Stromelsmoor</a></li>
+                <li><hr class="h-px my-2 bg-gray-400 border-0"></li>
                 <li><a href="/htmx">htmx...</a></li>
+                <li><a href="/posts/post-1">Markdown</a></li>
+                <li><a href="/remote-markdown">Remote Markdown</a></li>
+                <li><hr class="h-px my-2 bg-gray-400 border-0"></li>
+                <li><a href="/cookie">🍪 KESKE!</a></li>
             </ul>
         </div>
 
